@@ -18,7 +18,7 @@ void doPrePostFixer()
             ->getDefaultSymbol(&angleBrackets);
 
     ((struct TEXT_FORMATTER__VTABLE*)((TextFormatter*)&angleBrackets)->vtpntr)
-            ->print("Hello World!");
+            ->print(&angleBrackets, "Hello World!");
     ((struct PRE_POST_FIXER__VTABLE*)((TextFormatter*)&angleBrackets)->vtpntr)
             ->print_l_c(&angleBrackets, -777, defaultSymbol);
     ((struct PRE_POST_FIXER__VTABLE*)((TextFormatter*)&angleBrackets)->vtpntr)
@@ -187,7 +187,7 @@ void doFormatterArray()
 
     for (int i = 0; i < 3; ++i)
         ((struct TEXT_FORMATTER__VTABLE*)((TextFormatter*)&formatters[i])->vtpntr)
-                ->print("Hello World!");
+                ->print(&formatters[i], "Hello World!");
 
     printf("\n--- end doFormatterArray() ---\n\n");
 }
@@ -215,7 +215,7 @@ void doFormatterPtrs()
 
     for (int i = 0; i < 3; ++i)
         ((struct TEXT_FORMATTER__VTABLE*)((TextFormatter*)&pfmt[i])->vtpntr)
-                ->print("Hello World!");
+                ->print(&pfmt[i], "Hello World!");
 
     for (int i = 2; i >= 0; --i)
         free(&pfmt[i]);
@@ -231,7 +231,7 @@ void doFormatterDynamicArray()
 
     for (int i = 0; i < 3; ++i)
         ((struct TEXT_FORMATTER__VTABLE*)((TextFormatter*)&formatters[i])->vtpntr)
-                ->print("Hello World!");
+                ->print(&formatters[i], "Hello World!");
 
     for (int i = 2; i >= 0; --i)
         free(&formatters[i]);

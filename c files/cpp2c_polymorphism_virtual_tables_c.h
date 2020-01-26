@@ -12,7 +12,7 @@
 /* Text formatter virtual table*/
 struct TEXT_FORMATTER__VTABLE{
     void (*dtor)(void*);
-    void (*print)(const char*);
+    void (*print)(TextFormatter * const, const char*);
 }TEXT_FORMATTER__VTABLE;
 
 void TEXT_FORMATTER__VTABLE_init_();
@@ -20,7 +20,7 @@ void TEXT_FORMATTER__VTABLE_init_();
 /* The default text formatter table */
 struct DEFAULT_TEXT_FORMATTER__VTABLE{
     void (*dtor)(void*);
-    void (*print)(const char*);
+    void (*print)(DefaultTextFormatter * const, const char*);
 }DEFAULT_TEXT_FORMATTER__VTABLE;
 
 void DEFAULT_TEXT_FORMATTER__VTABLE_init_();
@@ -28,7 +28,7 @@ void DEFAULT_TEXT_FORMATTER__VTABLE_init_();
 /* Pre & Post fixer table*/
 struct PRE_POST_FIXER__VTABLE{
     void (*dtor)(void*);
-    void (*print)(const char*);
+    void (*print)(PrePostFixer * const, const char*);
     char (*getDefaultSymbol)(const PrePostFixer * const);
     void (*print_l_c)(const PrePostFixer * const, long num,char symbol)
 }PRE_POST_FIXER__VTABLE;
@@ -38,7 +38,7 @@ void PRE_POST_FIXER__VTABLE_init_();
 /* Pre & Post of Dollar fixer table*/
 struct PRE_POST_DOLLAR_FIXER__VTABLE{
     void (*dtor)(void*);
-    void (*print)(const char*);
+    void (*print)(PrePostFixer * const, const char*);
     char (*getDefaultSymbol)(const PrePostFixer * const);
     void (*print_l_c)(const PrePostFixer * const, long num,char symbol)
 }PRE_POST_DOLLAR_FIXER__VTABLE;
@@ -48,7 +48,7 @@ void PRE_POST_DOLLAR_FIXER__VTABLE_init_();
 /* Pre & Post of Hash fixer table*/
 struct PRE_POST_HASH_FIXER__VTABLE{
     void (*dtor)(void*);
-    void (*print)(const char*);
+    void (*print)(PrePostFixer * const, const char*);
     char (*getDefaultSymbol)(const PrePostFixer * const);
     void (*print_l_c)(const PrePostFixer * const, long num,char symbol)
 }PRE_POST_HASH_FIXER__VTABLE;
@@ -58,7 +58,7 @@ void PRE_POST_HASH_FIXER__VTABLE_init_();
 /* Pre & Post of Float Dollar fixer table*/
 struct PRE_POST_FLOAT_DOLLAR_FIXER__VTABLE{
     void (*dtor)(void*);
-    void (*print)(const char*);
+    void (*print)(PrePostFixer * const, const char*);
     char (*getDefaultSymbol)(const PrePostFixer * const);
     void (*print_l_c)(const PrePostFixer * const, long num,char symbol)
 }PRE_POST_FLOAT_DOLLAR_FIXER__VTABLE;
@@ -68,7 +68,7 @@ void PRE_POST_FLOAT_DOLLAR_FIXER__VTABLE_init_();
 /* Pre & Post of Float Dollar fixer table*/
 struct PRE_POST_CHECKER__VTABLE{
     void (*dtor)(void*);
-    void (*print)(const char*);
+    void (*print)(PrePostFixer * const, const char*);
     char (*getDefaultSymbol)(const PrePostFixer * const);
     void (*print_l_c)(const PrePostFixer * const, long num,char symbol)
 }PRE_POST_CHECKER__VTABLE;
@@ -78,7 +78,7 @@ void PRE_POST_CHECKER__VTABLE_init_();
 /* The default text formatter table */
 struct MULTIPLIER__VTABLE{
     void (*dtor)(void*);
-    void (*print)(const char*);
+    void (*print)(Multiplier * const, const char*);
 }MULTIPLIER__VTABLE;
 
 void MULTIPLIER__VTABLE_init_();
