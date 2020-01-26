@@ -16,6 +16,8 @@ void doPrePostFixer()
 
     char defaultSymbol = ((struct PRE_POST_FIXER__VTABLE*)((TextFormatter*) &angleBrackets)->vtpntr)
             ->getDefaultSymbol(&angleBrackets);
+    // debug print
+    printf("DEFAULT SYMBOL: %c\n", defaultSymbol);
 
     ((struct TEXT_FORMATTER__VTABLE*)((TextFormatter*)&angleBrackets)->vtpntr)
             ->print(&angleBrackets, "Hello World!");
@@ -37,8 +39,10 @@ void doPrePostDollarFixer()
     PrePostDollarFixer__PrePostDollarFixer_s_s_2(&asterisks,
             "***** ", " *****");
 
-    char defaultSymbol = ((struct PRE_POST_FIXER__VTABLE*)((TextFormatter*) &asterisks)->vtpntr)
+    char defaultSymbol = ((struct PRE_POST_DOLLAR_FIXER__VTABLE*)((TextFormatter*) &asterisks)->vtpntr)
             ->getDefaultSymbol(&asterisks);
+    // debug print
+    printf("DEFAULT SYMBOL: %c\n", defaultSymbol);
 
     ((struct PRE_POST_FIXER__VTABLE*)((TextFormatter*)&asterisks)->vtpntr)
             ->print_l_c(&asterisks, -777, defaultSymbol);
@@ -131,9 +135,9 @@ void runAsPrePostDollarFixerObj(const PrePostDollarFixer pp)
 
     char defaultSymbol2 = ((struct PRE_POST_FIXER__VTABLE*)((TextFormatter*) &pp)->vtpntr)
             ->getDefaultSymbol(&pp);
-
+    printf("useless print\n");
     ((struct PRE_POST_DOLLAR_FIXER__VTABLE*)((TextFormatter*)&pp)->vtpntr)
-            ->print_l_c(&pp, 123, defaultSymbol2);
+            ->print_l_c(&pp, (long)123, defaultSymbol2);
 
     printf("\n--- end runAsPrePostDollarFixerObj() ---\n\n");
 }
@@ -176,7 +180,9 @@ void doFormatterArray()
     printf("\n--- start doFormatterArray() ---\n\n");
     DefaultTextFormatter formatter1, formatter2, formatter3;
     PrePostDollarFixer__PrePostDollarFixer_s_s_2(&formatter1, "!!! ", " !!!");
+
     Multiplier__Multiplier_i_1(&formatter2, 4);
+
     PrePostChecker__PrePostChecker_0(&formatter3);
     DefaultTextFormatter formatters[] =
             {
@@ -265,7 +271,7 @@ int main()
 
     doMultiplier();
 
-    doFormatterArray();
+    /*doFormatterArray();*/
     doFormatterPtrs();
     doFormatterDynamicArray();
 

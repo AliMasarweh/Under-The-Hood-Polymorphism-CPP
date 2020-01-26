@@ -108,8 +108,8 @@ void kPrePostFixer__print_l_c_2(const PrePostFixer * const this, long num, char 
 
 void PrePostDollarFixer__PrePostDollarFixer_s_s_2(PrePostDollarFixer *const this, const char *prefix,
                                     const char *postfix) {
-    ((TextFormatter*) this)->vtpntr = &PRE_POST_DOLLAR_FIXER__VTABLE;
     PrePostFixer__PrePostFixer_s_s_2(&this->__base, prefix, postfix);
+    ((TextFormatter*) this)->vtpntr = &PRE_POST_DOLLAR_FIXER__VTABLE;
     printf("--- PrePostDollarFixer CTOR: \"%s\"...\"%s\"\n",
            kPrePostFixer__getPrefix_0((&this->__base)),
            kPrePostFixer__getPostfix_0((&this->__base)));
@@ -117,8 +117,8 @@ void PrePostDollarFixer__PrePostDollarFixer_s_s_2(PrePostDollarFixer *const this
 
 void PrePostDollarFixer__PrePostDollarFixer_kPrePostHashFixerkP_1(PrePostDollarFixer *const this,
                                         const PrePostDollarFixer *const other) {
-    ((TextFormatter*) this)->vtpntr = &PRE_POST_DOLLAR_FIXER__VTABLE;
     this->__base = other->__base;
+    ((TextFormatter*) this)->vtpntr = &PRE_POST_DOLLAR_FIXER__VTABLE;
     printf("--- PrePostDollarFixer Copy CTOR: \"%s\"...\"%s\"\n",
            kPrePostFixer__getPrefix_0((&this->__base)),
            kPrePostFixer__getPostfix_0((&this->__base)));
@@ -161,8 +161,10 @@ char kPrePostDollarFixer__getDefaultSymbol_0(const PrePostDollarFixer * const th
 
 void PrePostHashFixer__PrePostHashFixer_i_1(PrePostHashFixer * const this, int prc)
 {
+    // What is this??
     ((TextFormatter*) this)->vtpntr = &PRE_POST_HASH_FIXER__VTABLE;
     PrePostDollarFixer__PrePostDollarFixer_s_s_2(&this->__base, "===> ", " <===");
+    ((TextFormatter*) this)->vtpntr = &PRE_POST_HASH_FIXER__VTABLE;
     this->precision = prc;
     printf("--- PrePostHashFixer CTOR: \"%s\"...\"%s\", precision: %d\n",
            kPrePostFixer__getPrefix_0((&this->__base.__base)),
@@ -213,8 +215,8 @@ char kPrePostHashFixer__getDefaultSymbol_0(const PrePostHashFixer * const this)
 void PrePostFloatDollarFixer__PrePostFloatDollarFixer_s_s_2(PrePostFloatDollarFixer* const this,
                                           const char* prefix, const char* postfix)
 {
-    ((TextFormatter*) this)->vtpntr = &PRE_POST_FLOAT_DOLLAR_FIXER__VTABLE;
     PrePostDollarFixer__PrePostDollarFixer_s_s_2(&(this->__base), prefix, postfix);
+    ((TextFormatter*) this)->vtpntr = &PRE_POST_FLOAT_DOLLAR_FIXER__VTABLE;
     printf("--- PrePostFloatDollarFixer CTOR: \"%s\"...\"%s\"\n",
            kPrePostFixer__getPrefix_0((&this->__base.__base)),
            kPrePostFixer__getPostfix_0((&this->__base.__base))
@@ -257,8 +259,8 @@ char kPrePostFloatDollarFixer__getDefaultSymbol_0(const PrePostFloatDollarFixer*
 
 void PrePostChecker__PrePostChecker_0(PrePostChecker * const this)
 {
-    ((TextFormatter*) this)->vtpntr = &PRE_POST_CHECKER__VTABLE;
     PrePostFloatDollarFixer__PrePostFloatDollarFixer_s_s_2(this, "[[[[ ", " ]]]]");
+    ((TextFormatter*) this)->vtpntr = &PRE_POST_CHECKER__VTABLE;
     printf("--- PrePostChecker CTOR: \"%s\"...\"%s\"\n",
        kPrePostFixer__getPrefix_0((&this->__base.__base.__base)),
        kPrePostFixer__getPostfix_0((&this->__base.__base.__base))
