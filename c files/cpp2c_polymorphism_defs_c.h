@@ -31,7 +31,7 @@ struct DefaultTextFormat__Ider
     char dummy;
 };
 
-int DefaultTextFormat__Ider__next_id = 0;
+extern int DefaultTextFormat__Ider__next_id;
 #define DefaultTextFormat__Ider__getId_0() (++DefaultTextFormat__Ider__next_id)
 /*static int DefaultTextFormat__Ider__getId_0() {return ++DTF__Ider__next_id;}*/
 
@@ -83,7 +83,7 @@ void PrePostFixer__dtorPrePostFixer_0(PrePostFixer * const);
 const char* kPrePostFixer__getPostfix_0(const PrePostFixer * const);*/
 
 void kPrePostFixer__print_num_l_1(const PrePostFixer * const, long num);
-void kPrePostFixer__print_num_l_c_2(const PrePostFixer * const, long num, char symbol);
+/*void kPrePostFixer__print_num_l_c_2(const PrePostFixer * const, long num, char symbol);*/
 //// PrePostFixer Defs ////////////
 
 #define kPrePostFixer__getPrefix_0(this) this->pre
@@ -107,13 +107,8 @@ printFunc("[PrePostFixer::print_num(long)]");
 printf("%s%ld%s\n", this->pre, num, this->post);
 }*/
 
-#define kPrePostFixer_print_num_l_c_2(this, num, symbol) printFunc("[PrePostFixer::print_num(long, char)]"); printf("%s%c%ld%s\n", this->pre, symbol, num, this->post)
+#define kPrePostFixer__print_num_l_c_2(this, num, symbol) printFunc("[PrePostFixer::print_num(long, char)]"); printf("%s%c%ld%s\n", this->pre, symbol, num, this->post)
 
-/*void kPrePostFixer_print_num_l_c_2(const PrePostFixer * const this, long num, char symbol)
-{
-printFunc("[PrePostFixer::print_num(long, char)]");
-printf("%s%c%ld%s\n", this->pre, symbol, num, this->post);
-}*/
 
 //// PrePostDollarFixer ////////////
 
@@ -122,7 +117,7 @@ typedef struct PrePostDollarFixer
     PrePostFixer __base;
 
 }PrePostDollarFixer;
-const char PrePostDollarFixer__DEFAULT_SYMBOL = '$';
+extern const char PrePostDollarFixer__DEFAULT_SYMBOL;
 
 void PrePostDollarFixer__PrePostDollarFixer_s_s_2(PrePostDollarFixer * const, const char* prefix,
         const char* postfix);
@@ -146,7 +141,7 @@ typedef struct PrePostHashFixer
     PrePostDollarFixer __base;
     int precision;
 }PrePostHashFixer;
-const char PrePostHashFixer__DEFAULT_SYMBOL = '#';
+extern const char PrePostHashFixer__DEFAULT_SYMBOL;
 
 void PrePostHashFixer__PrePostHashFixer_i_1(PrePostHashFixer * const, int prc /*= 4*/);
 void PrePostHashFixer__dtorPrePostHashFixer_0(PrePostHashFixer * const);
@@ -169,7 +164,7 @@ typedef struct PrePostFloatDollarFixer
 {
     PrePostDollarFixer __base;
 }PrePostFloatDollarFixer;
-const char PrePostFloatDollarFixer__DEFAULT_SYMBOL = '@';
+extern const char PrePostFloatDollarFixer__DEFAULT_SYMBOL;
 
 void PrePostFloatDollarFixer__PrePostFloatDollarFixer_s_s_2(PrePostFloatDollarFixer* const,
         const char* prefix, const char* postfix);

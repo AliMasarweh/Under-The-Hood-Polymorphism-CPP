@@ -6,6 +6,11 @@
 #include "cpp2c_polymorphism_defs_c.h"
 #include "cpp2c_polymorphism_virtual_tables_c.h"
 
+int DefaultTextFormat__Ider__next_id = 0;
+const char PrePostDollarFixer__DEFAULT_SYMBOL = '$';
+const char PrePostHashFixer__DEFAULT_SYMBOL = '#';
+const char PrePostFloatDollarFixer__DEFAULT_SYMBOL = '@';
+
 void TextFormat__dtorTextFormatter(TextFormatter* const this){
     this->vtpntr = NULL;
 }
@@ -86,11 +91,18 @@ void kPrePostFixer__print_l_c_2(const PrePostFixer * const this, long num, char 
     printFunc("[PrePostFixer::print(long, char)]");
     printf("-->\n");
 
-    if (symbol)
+    if (symbol){
         kPrePostFixer__print_num_l_c_2(this, num, symbol);
+    }
     else
-    kPrePostFixer__print_num_l_1(this, num);
+        kPrePostFixer__print_num_l_1(this, num);
 }
+
+/*void kPrePostFixer__print_num_l_c_2(const PrePostFixer * const this, long num, char symbol)
+{
+    printFunc("[PrePostFixer::print_num(long, char)]");
+    printf("%s%c%ld%s\n", this->pre, symbol, num, this->post);
+}*/
 
 //// PrePostDollarFixer Defs ////////////
 
@@ -289,14 +301,14 @@ printFunc("[PrePostChecker::printDollarSymbolByScopeUsingFunc()]");
 printf("Default symbol is %c\n", kPrePostDollarFixer__getDefaultSymbol_0(this));
 }
 
-void PrePostChecker__printDollarSymbolByCastDirectly_0(PrePostChecker * const this)
+void kPrePostChecker__printDollarSymbolByCastDirectly_0(PrePostChecker * const this)
 {
 printFunc("[PrePostChecker::printDollarSymbolByCastDirectly()]");
 
 printf("Default symbol is %c\n", PrePostDollarFixer__DEFAULT_SYMBOL);
 }
 
-void PrePostChecker__printDollarSymbolByScopeDirectly_0(PrePostChecker * const this)
+void kPrePostChecker__printDollarSymbolByScopeDirectly_0(PrePostChecker * const this)
 {
 printFunc("[PrePostChecker::printDollarSymbolByScopeDirectly()]");
 
