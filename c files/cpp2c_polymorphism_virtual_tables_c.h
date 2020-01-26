@@ -83,6 +83,6 @@ struct MULTIPLIER__VTABLE{
 
 void MULTIPLIER__VTABLE_init_();
 
-void init_all();
+void poly_vtables_init_all();
 
 #endif //TRANSLATOR_CPP2C_POLYMORPHISM_VIRTUAL_TABLES_C_H

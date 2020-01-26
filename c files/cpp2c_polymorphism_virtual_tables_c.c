@@ -55,7 +55,7 @@ void MULTIPLIER__VTABLE_init_(){
     MULTIPLIER__VTABLE.print = Multiplier__print;
 }
 
-void init_all()
+void poly_vtables_init_all()
 {
     TEXT_FORMATTER__VTABLE_init_();
     DEFAULT_TEXT_FORMATTER__VTABLE_init_();

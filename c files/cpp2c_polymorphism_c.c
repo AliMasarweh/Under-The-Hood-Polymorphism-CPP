@@ -241,6 +241,8 @@ void doFormatterDynamicArray()
 
 int main()
 {
+    poly_vtables_init_all();
+    /* Pre-Main */
     printf("\n--- Start main() ---\n\n");
 
     doPrePostFixer();
