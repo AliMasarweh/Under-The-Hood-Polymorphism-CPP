@@ -142,11 +142,11 @@ void runAsPrePostHashFixerRef(const PrePostHashFixer* const pp)
 {
     printf("\n--- start runAsPrePostHashFixerRef() ---\n\n");
 
-    char defaultSymbol2 = ((struct PRE_POST_FIXER__VTABLE*)((TextFormatter*) &pp)->vtpntr)
-            ->getDefaultSymbol(&pp);
+    char defaultSymbol2 = ((struct PRE_POST_FIXER__VTABLE*)((TextFormatter*) pp)->vtpntr)
+            ->getDefaultSymbol(pp);
 
-    ((struct PRE_POST_DOLLAR_FIXER__VTABLE*)((TextFormatter*)&pp)->vtpntr)
-    ->print_l_c(&pp, 123, defaultSymbol2);
+    ((struct PRE_POST_DOLLAR_FIXER__VTABLE*)((TextFormatter*)pp)->vtpntr)
+    ->print_l_c(pp, 123, defaultSymbol2);
 
     printf("\n--- end runAsPrePostHashFixerRef() ---\n\n");
 }
@@ -259,9 +259,9 @@ int main()
 
     doMultiplier();
 
-    doFormatterArray();
-    doFormatterPtrs();
-    doFormatterDynamicArray();
+    /*doFormatterArray();*/
+    /*doFormatterPtrs();*/
+    /*doFormatterDynamicArray();*/
 
     printf("\n--- End main() ---\n\n");
 
