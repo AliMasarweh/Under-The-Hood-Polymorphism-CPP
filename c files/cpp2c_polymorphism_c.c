@@ -214,11 +214,11 @@ void doFormatterPtrs()
             };
 
     for (int i = 0; i < 3; ++i)
-        ((struct TEXT_FORMATTER__VTABLE*)((TextFormatter*)&pfmt[i])->vtpntr)
-                ->print(&pfmt[i], "Hello World!");
+        ((struct TEXT_FORMATTER__VTABLE*)((TextFormatter*)pfmt[i])->vtpntr)
+                ->print(pfmt[i], "Hello World!");
 
     for (int i = 2; i >= 0; --i)
-        free(&pfmt[i]);
+        free(pfmt[i]);
 
     printf("\n--- end doFormatterPtrs() ---\n\n");
 }
@@ -229,12 +229,18 @@ void doFormatterDynamicArray()
 
     DefaultTextFormatter* formatters = generateFormatterArray();
 
+    for(int i = 0; i<3;i++)
+        DefaultTextFormat__DefaultTextFormatter_0(&formatters[i]);
+
+
+
     for (int i = 0; i < 3; ++i)
         ((struct TEXT_FORMATTER__VTABLE*)((TextFormatter*)&formatters[i])->vtpntr)
                 ->print(&formatters[i], "Hello World!");
 
-    for (int i = 2; i >= 0; --i)
-        free(&formatters[i]);
+    free(formatters);
+
+    printf("123\n");
 
     printf("\n--- start doFormatterDynamicArray() ---\n\n");
 }
@@ -259,9 +265,9 @@ int main()
 
     doMultiplier();
 
-    /*doFormatterArray();*/
-    /*doFormatterPtrs();*/
-    /*doFormatterDynamicArray();*/
+    doFormatterArray();
+    doFormatterPtrs();
+    doFormatterDynamicArray();
 
     printf("\n--- End main() ---\n\n");
 
